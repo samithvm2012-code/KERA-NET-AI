@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KERA-NET AI Authentication</title>
+    <style>
+        body { background: #0d1117; color: #c9d1d9; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-card { background: #161b22; border: 1px solid #30363d; padding: 30px; border-radius: 12px; width: 350px; text-align: center; }
+        input { width: 100%; padding: 12px; margin: 10px 0; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; box-sizing: border-box; }
+        .btn-group { display: flex; gap: 10px; margin-top: 15px; }
+        button { flex: 1; padding: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        .btn-login { background: #238636; color: #fff; }
+        .btn-register { background: #1f6feb; color: #fff; }
+        .flash { color: #ff7b72; font-size: 0.9rem; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>KERA-NET AI</h2>
+        <p style="color: #8b949e; font-size: 0.85rem; margin-bottom: 20px;">Powered by {{ engine }}</p>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="email" name="email" placeholder="Enter your Gmail address..." required>
+            <input type="password" name="password" placeholder="Enter password..." required>
+            
+            <div class="btn-group">
+                <button type="submit" name="action" value="login" class="btn-login">Log In</button>
+                <button type="submit" name="action" value="register" class="btn-register">Register</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
