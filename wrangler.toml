@@ -1,0 +1,6 @@
+name = "kera-net-ai"
+compatibility_date = "2026-10-09"
+main = "app.py"
+
+[vars]
+PYTHON_VERSION = "3.11"
